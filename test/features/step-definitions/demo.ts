@@ -28,3 +28,27 @@ Then(/^URL should match (.*)$/,async function(expectedURL){
 
 
 })
+
+Given(/^A web page is opened$/,async function(){
+    await browser.url("/inputs")
+    await browser.setTimeout({implicit:15000, pageLoad:10000})
+    await browser.maximizeWindow()
+})
+
+When(/^Perform web interactions$/,async ()=>{
+//input box
+    let value1:number = 1234
+    let ele = await $('input[type=number]');
+    await ele.click();
+    //await ele.addValue(value1);
+
+    let valueString:string = value1.toString();
+    
+    for(let i=0;i<valueString.length; i++){
+        let charStr = valueString.charAt(i);
+        await browser.pause(1000);
+        await browser.keys(charStr);
+    }
+
+    await browser.debug();
+})
