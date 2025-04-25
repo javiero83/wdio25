@@ -35,7 +35,7 @@ Given(/^A web page is opened$/,async function(){
     await browser.maximizeWindow()
 })
 
-When(/^Perform web interactions$/,async ()=>{
+When(/^Perform web interactions: input$/,async ()=>{
 //input box
     let value1:number = 1234
     let ele = await $('input[type=number]');
@@ -51,4 +51,8 @@ When(/^Perform web interactions$/,async ()=>{
     }
 
     await browser.debug();
+})
+
+When(/^Perform web interactions: dropdown list$/, async ()=>{
+    
 })
