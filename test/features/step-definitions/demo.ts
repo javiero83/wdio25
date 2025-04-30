@@ -1,5 +1,6 @@
 import { Given,When,Then } from "@cucumber/cucumber";
 import * as chai from 'chai';
+import path from 'path';
 
 Given(/^Google page is opened$/,async function(){
     console.log("Before opening browser...");
@@ -30,7 +31,7 @@ Then(/^URL should match (.*)$/,async function(expectedURL){
 })
 
 Given(/^A web page is opened$/,async function(){
-    await browser.url("/basic_auth")
+    await browser.url("/upload")
     await browser.setTimeout({implicit:15000, pageLoad:10000})
     //await browser.maximizeWindow()
 })
@@ -179,6 +180,18 @@ When(/^Perform web interactions$/,async ()=>{
     // } else {
     //     console.warn('Alert was auto-closed by the browser before acceptAlert.');
     // }
+
+    //UPLOAD FILES
+    console.log(process.cwd());
+
+    const filepath =  path.join(process.cwd(),'data','fileupload','dummy.txt')
+
+     await $('#file-upload').setValue(filepath);
+     await $('#file-submit').click();
+
+     //await browser.pause(4000);
+    const success = await $('<h3>').getText();
+    chai.expect(success).to.equal('File Uploaded!');
 
     await browser.debug();
     
