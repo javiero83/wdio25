@@ -31,7 +31,7 @@ Then(/^URL should match (.*)$/,async function(expectedURL){
 })
 
 Given(/^A web page is opened$/,async function(){
-    await browser.url("/upload")
+    await browser.url("https://amazon.com.au")
     await browser.setTimeout({implicit:15000, pageLoad:10000})
     //await browser.maximizeWindow()
 })
@@ -182,16 +182,137 @@ When(/^Perform web interactions$/,async ()=>{
     // }
 
     //UPLOAD FILES
-    console.log(process.cwd());
+    // console.log(process.cwd());
 
-    const filepath =  path.join(process.cwd(),'data','fileupload','dummy.txt')
+    // const filepath =  path.join(process.cwd(),'data','fileupload','dummy.txt')
 
-     await $('#file-upload').setValue(filepath);
-     await $('#file-submit').click();
+    //  await $('#file-upload').setValue(filepath);
+    //  await $('#file-submit').click();
 
-     //await browser.pause(4000);
-    const success = await $('<h3>').getText();
-    chai.expect(success).to.equal('File Uploaded!');
+    //  //await browser.pause(4000);
+    // const success = await $('<h3>').getText();
+    // chai.expect(success).to.equal('File Uploaded!');
+
+    //FRAME
+    // await $('=iFrame').click();
+    // await $('//button[.//div[@aria-label="Close"]]').click();
+
+    // const frame = await $('#mce_0_ifr');
+    // await browser.switchFrame(frame);
+
+
+    // const txtbody =await $('#tinymce').getText();
+
+    // chai.expect(txtbody).to.equal("Your content goes here.");
+//tables
+
+//number of rows and tables
+
+    // let rowCount = await $$('//table[@id="table1"]/tbody/tr').length;
+    // chai.expect(rowCount).to.equal(4);
+    // console.log(`>> Number of rows: ${rowCount}, expected: 4`);
+
+    // let columnCount = await $$('//table[@id="table1"]/thead/tr/th').length;
+    // chai.expect(columnCount).to.equal(6);
+    // console.log(`>> Number of columns: ${columnCount}, expected 6`);
+
+    //Get whole table data
+    //table[@id="table1"]/tbody/tr/td
+    // let arr = [];
+    // let arr2=[];
+    // for(let i=0; i< await rowCount; i++){
+    //     let personObj = {
+    //         lastname: "",
+    //         firstname: "",
+    //         email: "",
+    //         due: "",
+    //         web: "",
+    //     }
+
+    //     for(let j=0;j< await columnCount; j++){
+    //         let cellVal = await $(`//table[@id="table1"]/tbody/tr[${i+1}]/td[${j+1}]`).getText();
+    //         //console.log(`>>Cell Value: ${cellVal}`);
+    //         if(j === 0)personObj.lastname = cellVal
+    //         if(j === 1)personObj.firstname = cellVal
+    //         if(j === 2)personObj.email = cellVal
+    //         if(j === 3)personObj.due = cellVal
+    //         if(j === 4)personObj.web = cellVal
+            
+    //     }
+    //     arr.push(personObj);
+    // }
+    // console.log(`>>Whole table: ${JSON.stringify(arr)}`);
+
+    //Get single row [Based on a condition]
+    //I want to get row with firstname John
+// let arr = [];
+    
+//     for(let i=0; i< await rowCount; i++){
+//         let personObj = {
+//             lastname: "",
+//             firstname: "",
+//             email: "",
+//             due: "",
+//             web: "",
+//         }
+
+//         for(let j=0;j< await columnCount; j++){
+//             let cellVal = await $(`//table[@id="table1"]/tbody/tr[${i+1}]/td[${j+1}]`).getText();
+//             let firstName = await $(`//table[@id="table1"]/tbody/tr[${i+1}]/td[2]`).getText();
+//             if(firstName=== "Jason"){
+//                 if(j === 0)personObj.lastname = cellVal
+//                 if(j === 1)personObj.firstname = cellVal
+//                 if(j === 2)personObj.email = cellVal
+//                 if(j === 3)personObj.due = cellVal
+//                 if(j === 4)personObj.web = cellVal
+//             }
+//             //console.log(`>>Cell Value: ${cellVal}`);  
+//         }
+//         if(personObj.firstname){
+//             arr.push(personObj);
+//         }
+        
+//     }
+//     console.log(`>>Whole table: ${JSON.stringify(arr)}`);
+
+    //Get Single Column
+
+    //SCROLL
+    /**
+     * VISIBLE PORTION
+     * windows object:
+     * 1. ScrollBy
+     *  Y-> [-]window.innerHeight
+     * 
+     */
+        //scroll down
+        await browser.execute(()=>{
+            window.scrollBy(0,window.innerHeight);
+        })
+
+        await browser.pause(2000)
+         //scroll up
+         await browser.execute(()=>{
+            window.scrollBy(0,-window.innerHeight);
+        })
+
+        await browser.pause(2000)
+
+    /**
+     * INVISIBLE PORTION
+     * windows object:
+     * 1. scrollTo
+     * Y-> document.body.scrollTop[scrollHeight]
+     */
+    await browser.execute(()=>{
+        window.scrollTo(0,document.body.scrollHeight)
+    })
+
+    await browser.pause(2000);
+    await browser.execute(()=>{
+        window.scrollTo(0,document.body.scrollTop)
+    })
+
 
     await browser.debug();
     
