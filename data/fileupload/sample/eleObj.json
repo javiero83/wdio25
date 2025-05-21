@@ -1,0 +1,37 @@
+{
+  "sessionId": "327dd142d52efefd04797569a07b764e",
+  "elementId": "f.25593AACC3B1B141F907BE02FC22D94C.d.B7F4EAF544280E223B0B26611FEB09A2.e.2",
+  "element-6066-11e4-a52e-4f735466cecf": "f.25593AACC3B1B141F907BE02FC22D94C.d.B7F4EAF544280E223B0B26611FEB09A2.e.2",
+  "locator": { "type": "css", "value": "[name=q]" },
+  "selector": "[name=q]",
+  "parent": {
+    "sessionId": "327dd142d52efefd04797569a07b764e",
+    "capabilities": {
+      "acceptInsecureCerts": false,
+      "browserName": "chrome",
+      "browserVersion": "135.0.7049.117",
+      "chrome": {
+        "chromedriverVersion": "135.0.7049.114 (63fd8a7d9d09e41ba37b84386c85d5f249f848f7-refs/branch-heads/7049@{#2175})",
+        "userDataDir": "C:\\Users\\JAVIER~1.ORT\\AppData\\Local\\Temp\\scoped_dir9776_282075819"
+      },
+      "fedcm:accounts": true,
+      "goog:chromeOptions": { "debuggerAddress": "localhost:62752" },
+      "networkConnectionEnabled": false,
+      "pageLoadStrategy": "normal",
+      "platformName": "windows",
+      "proxy": {},
+      "setWindowRect": true,
+      "strictFileInteractability": false,
+      "timeouts": { "implicit": 0, "pageLoad": 300000, "script": 30000 },
+      "unhandledPromptBehavior": "ignore",
+      "webSocketUrl": "ws://localhost:9515/session/327dd142d52efefd04797569a07b764e",
+      "webauthn:extension:credBlob": true,
+      "webauthn:extension:largeBlob": true,
+      "webauthn:extension:minPinLength": true,
+      "webauthn:extension:prf": true,
+      "webauthn:virtualAuthenticators": true
+    }
+  },
+  "isReactElement": false,
+  "isShadowElement": false
+}
