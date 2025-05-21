@@ -1,12 +1,13 @@
 import { Given,When,Then } from "@cucumber/cucumber";
 import * as chai from 'chai';
-import path from 'path';
+//import path from 'path';
 
 Given(/^Google page is opened$/,async function(){
     console.log("Before opening browser...");
     await browser.url("https://www.google.com")
     await browser.pause(1000)
     console.log("After opening browser...");
+    //console.log(`>>BrowserObj: ${JSON.stringify(browser)}`);
 })
 
 When(/^Search with (.*)$/,async function(searchItem){
@@ -14,6 +15,7 @@ When(/^Search with (.*)$/,async function(searchItem){
     let ele = await $(`[name=q]`);
     await ele.setValue(searchItem)
     await browser.keys('Enter')
+    //console.log(`>>Ele obj: ${JSON.stringify(ele)}`);
 })
 
 Then(/^Click on the first search result$/, async function(){
@@ -23,6 +25,10 @@ Then(/^Click on the first search result$/, async function(){
 
 Then(/^URL should match (.*)$/,async function(expectedURL){
     console.log(`>>expectedURL: ${expectedURL}`);
+    await browser.waitUntil(async ()=>{
+        return await browser.getTitle()=== "WebdriverIO · Framework de prueba de automatización de navegadores y móviles de próxima generación para Node.js | WebdriverIO"
+    },{timeout:20000, interval:500, timeoutMsg:`Failed loading WDIO web page: ${await browser.getTitle()}`})
+
     let url = await browser.getUrl();
     //await browser.pause(7000)
     chai.expect(url).to.equal(expectedURL)
@@ -286,32 +292,40 @@ When(/^Perform web interactions$/,async ()=>{
      * 
      */
         //scroll down
-        await browser.execute(()=>{
-            window.scrollBy(0,window.innerHeight);
-        })
+    //     await browser.execute(()=>{
+    //         window.scrollBy(0,window.innerHeight);
+    //     })
 
-        await browser.pause(2000)
-         //scroll up
-         await browser.execute(()=>{
-            window.scrollBy(0,-window.innerHeight);
-        })
+    //     await browser.pause(2000)
+    //      //scroll up
+    //      await browser.execute(()=>{
+    //         window.scrollBy(0,-window.innerHeight);
+    //     })
 
-        await browser.pause(2000)
+    //     await browser.pause(2000)
 
+    // /**
+    //  * INVISIBLE PORTION
+    //  * windows object:
+    //  * 1. scrollTo
+    //  * Y-> document.body.scrollTop[scrollHeight]
+    //  */
+    // //scroll down
+    // await browser.execute(()=>{
+    //     window.scrollTo(0,document.body.scrollHeight)
+    // })
+
+    // await browser.pause(2000);
+    // //scroll top
+    // await browser.execute(()=>{
+    //     window.scrollTo(0,document.body.scrollTop)
+    // })
+
+    //WAITS
     /**
-     * INVISIBLE PORTION
-     * windows object:
-     * 1. scrollTo
-     * Y-> document.body.scrollTop[scrollHeight]
+     * STATIC/DYNAMIC
      */
-    await browser.execute(()=>{
-        window.scrollTo(0,document.body.scrollHeight)
-    })
 
-    await browser.pause(2000);
-    await browser.execute(()=>{
-        window.scrollTo(0,document.body.scrollTop)
-    })
 
 
     await browser.debug();

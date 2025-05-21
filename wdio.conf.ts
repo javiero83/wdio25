@@ -60,9 +60,7 @@ export const config: WebdriverIO.Config = {
            '--disable-blink-features=AutomationControlled',
             '--start-maximized',
             '--no-sandbox',
-            '--disable-infobars',
-            '--disable-dev-shm-usage',
-            '--disable-gpu',
+            //'--disable-gpu',
             '--ignore-certificate-errors'
             ]
         }
@@ -164,7 +162,7 @@ export const config: WebdriverIO.Config = {
         // <string> (expression) only execute the features or scenarios with tags matching the expression
         tagExpression: '@demo',
         // <number> timeout for step definitions
-        timeout: 60000,
+        timeout: 300000,
         // <boolean> Enable this config to treat undefined definitions as warnings.
         ignoreUndefinedDefinitions: false
     },

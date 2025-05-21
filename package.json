@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "wdio": "wdio wdio.conf.ts"
+    "wdio": "wdio wdio.conf.ts",
+    "demo": "npx wdio wdio.conf.ts --cucumberOpts.tagExpression='@demo'",
+    "smoke": "npx wdio wdio.conf.ts --cucumberOpts.tagExpression='@smoke'"
   },
   "keywords": [
     "wdio",
