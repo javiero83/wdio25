@@ -1,0 +1,28 @@
+{
+  "sessionId": "95490f3348c184b7ab133ae7ae88ac5f",
+  "capabilities": {
+    "acceptInsecureCerts": false,
+    "browserName": "chrome",
+    "browserVersion": "135.0.7049.115",
+    "chrome": {
+      "chromedriverVersion": "135.0.7049.114 (63fd8a7d9d09e41ba37b84386c85d5f249f848f7-refs/branch-heads/7049@{#2175})",
+      "userDataDir": "C:\\Users\\JAVIER~1.ORT\\AppData\\Local\\Temp\\scoped_dir9708_660434327"
+    },
+    "fedcm:accounts": true,
+    "goog:chromeOptions": { "debuggerAddress": "localhost:56759" },
+    "networkConnectionEnabled": false,
+    "pageLoadStrategy": "normal",
+    "platformName": "windows",
+    "proxy": {},
+    "setWindowRect": true,
+    "strictFileInteractability": false,
+    "timeouts": { "implicit": 0, "pageLoad": 300000, "script": 30000 },
+    "unhandledPromptBehavior": "ignore",
+    "webSocketUrl": "ws://localhost:9515/session/95490f3348c184b7ab133ae7ae88ac5f",
+    "webauthn:extension:credBlob": true,
+    "webauthn:extension:largeBlob": true,
+    "webauthn:extension:minPinLength": true,
+    "webauthn:extension:prf": true,
+    "webauthn:virtualAuthenticators": true
+  }
+}
